@@ -19,9 +19,9 @@ limiter = Limiter(
 def api():
     address = request.args['address']
     response = requests.get(f"http://lunacia.skymavis.com/game-api/clients/{address}/items/1",headers=headers)
-    response=response.text
+    response=response.json()
     try:
-        return f"{response}"
+        return response
     except KeyError:
         return "Invalid input"
 
