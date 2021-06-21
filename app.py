@@ -10,10 +10,10 @@ app = Flask(__name__)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["5 per day"]
+    default_limits=["9999 per day"]
 )
 @app.route("/api",methods=['GET'])
-@limiter.limit("5 per day")
+@limiter.limit("9999 per day")
 def api():
     address = request.args['address']
     response = requests.get(f"http://lunacia.skymavis.com/game-api/clients/{address}/items/1",headers=headers).json()
